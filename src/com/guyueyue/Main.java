@@ -2,14 +2,14 @@ package src.com.guyueyue;
 
 public class Main {
     public static void main(String[] args) {
-
-
-//        char[][] arr = new char {
-//            ['1', '1', '1', '1', '0'],
-//            ["1", "1", "0", "1", "0"],
-//        ["1", "1", "0", "0", "0"],
-//        ["0", "0", "0", "0", "0"]
-//        };
+        char[][] arr = new char[][]{
+                {'1', '1', '1', '1', '0'},
+                {'1', '1', '0', '1', '0'},
+                {'1', '1', '0', '0', '0'},
+                {'0', '0', '0', '0', '0'}
+        };
+        Solution solution = new Solution();
+        System.out.println(solution.numIslands(arr));
     }
 }
 
@@ -22,7 +22,7 @@ class Solution {
         public UnionFind(int leng) {
             this.count = leng;
             this.arr = new int[leng];
-            for (int i = 1; i <= leng; i++) {
+            for (int i = 0; i < leng; i++) {
                 this.arr[i] = i;
             }
         }
