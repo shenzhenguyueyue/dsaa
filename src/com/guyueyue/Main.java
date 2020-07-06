@@ -1,4 +1,4 @@
-package src.com.guyueyue;
+package com.guyueyue;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,25 +19,39 @@ class Solution {
         private int count;
         private int[] arr;
 
-        public UnionFind(int leng) {
-            this.count = leng;
+        public UnionFind(char[][] grid) {
+            int leng = grid.length * grid[0].length;
             this.arr = new int[leng];
             for (int i = 0; i < leng; i++) {
                 this.arr[i] = i;
             }
+            for (int i = 0; i < grid.length; i++) {
+                for (int j = 0; j < grid[0].length; j++) {
+                    if(grid[i][j] == '1'){
+                        this.count++;
+                    }
+                }
+            }
         }
 
-        public boolean find(int p, int q) {
-            return this.arr[p] == this.arr[q];
+        public int find(int p){
+            return this.arr[p];
         }
 
-        public void union(int p, int q) {
-            if (this.find(p, q)) {
+        public void union(int p,int q){
+            int pID = find(p);
+            int qID = find(q);
+            if(pID == qID){
                 return;
             }
 
-            this.arr[p] = this.arr[q];
-            this.count--;
+            for (int i = 0; i < this.arr.length; i++) {
+                if(this.arr[i] == pID){
+                    this.arr[i] = qID;
+                }
+            }
+
+            count--;
         }
 
         public int getCount() {
@@ -52,21 +66,21 @@ class Solution {
 
         int nr = grid.length;
         int nc = grid[0].length;
-        UnionFind uf = new UnionFind(nr * nc);
+        UnionFind uf = new UnionFind(grid);
         for (int r = 0; r < nr; ++r) {
             for (int c = 0; c < nc; ++c) {
                 if (grid[r][c] == '1') {
                     grid[r][c] = '0';
-                    if (r - 1 >= 0 && grid[r - 1][c] == '1') {
+                    if (r - 1 >= 0 && grid[r - 1][c] == '1') {//上
                         uf.union(r * nc + c, (r - 1) * nc + c);
                     }
-                    if (r + 1 < nr && grid[r + 1][c] == '1') {
+                    if (r + 1 < nr && grid[r + 1][c] == '1') {//下
                         uf.union(r * nc + c, (r + 1) * nc + c);
                     }
-                    if (c - 1 >= 0 && grid[r][c - 1] == '1') {
+                    if (c - 1 >= 0 && grid[r][c - 1] == '1') {//左
                         uf.union(r * nc + c, r * nc + c - 1);
                     }
-                    if (c + 1 < nc && grid[r][c + 1] == '1') {
+                    if (c + 1 < nc && grid[r][c + 1] == '1') {//右
                         uf.union(r * nc + c, r * nc + c + 1);
                     }
                 }
