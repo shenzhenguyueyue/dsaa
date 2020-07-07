@@ -1,4 +1,4 @@
-package com.guyueyue;
+package src.com.guyueyue.Islands;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,50 +15,6 @@ public class Main {
 
 
 class Solution {
-    class UnionFind {
-        private int count;
-        private int[] arr;
-
-        public UnionFind(char[][] grid) {
-            int leng = grid.length * grid[0].length;
-            this.arr = new int[leng];
-            for (int i = 0; i < leng; i++) {
-                this.arr[i] = i;
-            }
-            for (int i = 0; i < grid.length; i++) {
-                for (int j = 0; j < grid[0].length; j++) {
-                    if(grid[i][j] == '1'){
-                        this.count++;
-                    }
-                }
-            }
-        }
-
-        public int find(int p){
-            return this.arr[p];
-        }
-
-        public void union(int p,int q){
-            int pID = find(p);
-            int qID = find(q);
-            if(pID == qID){
-                return;
-            }
-
-            for (int i = 0; i < this.arr.length; i++) {
-                if(this.arr[i] == pID){
-                    this.arr[i] = qID;
-                }
-            }
-
-            count--;
-        }
-
-        public int getCount() {
-            return this.count;
-        }
-    }
-
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) {
             return 0;
