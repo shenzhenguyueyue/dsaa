@@ -1,4 +1,4 @@
-package src.com.guyueyue.Islands;
+package com.guyueyue.Islands;
 
 class UnionFind {
     private int count;

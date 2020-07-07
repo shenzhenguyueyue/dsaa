@@ -1,4 +1,4 @@
-package src.com.guyueyue.Islands;
+package com.guyueyue.Islands;
 
 public class Main {
     public static void main(String[] args) {
