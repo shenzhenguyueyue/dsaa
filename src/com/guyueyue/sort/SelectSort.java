@@ -28,11 +28,11 @@ public class SelectSort {
                 }
             }
 
-            exch(i,key);
+            exch(i, key);
         }
     }
 
-    public void print(){
+    public void print() {
         System.out.println(Arrays.toString(this.arr));
     }
 }
