@@ -1,21 +1,11 @@
 package com.guyueyue.sort;
 
-import java.util.Arrays;
-
 /**
  * 选择排序
  */
-public class SelectSort {
-    private int[] arr;
-
+public class SelectSort extends Sort {
     public SelectSort(int[] arr) {
         this.arr = arr;
-    }
-
-    public void exch(int p, int q) {
-        int temp = this.arr[p];
-        this.arr[p] = this.arr[q];
-        this.arr[q] = temp;
     }
 
     public void sort() {
@@ -32,7 +22,4 @@ public class SelectSort {
         }
     }
 
-    public void print() {
-        System.out.println(Arrays.toString(this.arr));
-    }
 }
